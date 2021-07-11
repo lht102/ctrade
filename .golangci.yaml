@@ -1,0 +1,40 @@
+run:
+  timeout: 5m
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - varcheck
+    - bodyclose
+    - depguard
+    - dogsled
+    - dupl
+    - durationcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - gci
+    - gochecknoglobals
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - goerr113
+    - gofmt
+    - gofumpt
+    - goimports
+    - gomnd
+    - nilerr
+    - nlreturn
+    - noctx
+    - unparam
+    - whitespace
+    - wrapcheck
+    - wsl
