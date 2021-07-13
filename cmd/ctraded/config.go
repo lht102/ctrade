@@ -16,6 +16,8 @@ import (
 const (
 	longHTTPTimeout  = 30 * time.Second
 	shortHTTPTimeout = 5 * time.Second
+	// updateBinanceExchangeInfoInterval = 15 * time.Minute
+	updateBinanceExchangeInfoInterval = 1 * time.Second
 )
 
 var (

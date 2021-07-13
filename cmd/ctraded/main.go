@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/adshao/go-binance/v2"
 	"github.com/adshao/go-binance/v2/futures"
@@ -60,6 +61,17 @@ func main() {
 	if err != nil {
 		logger.Fatal("Fail to init binance futures manager", zap.Error(err))
 	}
+
+	ticker := time.NewTicker(updateBinanceExchangeInfoInterval)
+	defer ticker.Stop()
+
+	go func() {
+		for range ticker.C {
+			if err := binanceFuturesManager.UpdateSupportedSymbols(); err != nil {
+				logger.Error("Fail to update supported symbols info", zap.Error(err))
+			}
+		}
+	}()
 
 	twitterAuthCfg, err := getTwitterClientCredentialsConfig(v)
 	if err != nil {
