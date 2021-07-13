@@ -9,6 +9,10 @@ build:
 	@mkdir bin/
 	CGO_ENABLED=0 go build -ldflags "-w -s" -v -o ./bin ./cmd/ctraded
 
+.PHONY: run
+run: build
+	./bin/ctraded
+
 .PHONY: dep
 dep:
 	go mod tidy
