@@ -95,6 +95,7 @@ func (m *BinanceFuturesManager) createLongPosition(symbol string) error {
 	if err != nil {
 		return fmt.Errorf("create buy order: %w", err)
 	}
+	m.logger.Sugar().Infof("Executed a %s buy order at ~%s with %s amount", symbol, price.String(), qty.String())
 
 	getOrderResp, err := m.futuresClient.NewGetOrderService().
 		OrderID(createOrderResp.OrderID).
